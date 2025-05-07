@@ -95,15 +95,38 @@ cursor.execute('select nome from aluno where idade > 30 order by nome desc')
 r = cursor.fetchall()
 print('Dados do aluno ordenado (A-Z)')
 for i in r:
-    print(i)"""
+    print(i)
+
+#delete - deletar apenas 1 registro ----------------------------------
 
 cursor.execute('delete from aluno where matricula=1')
 conexao.commit()
-print(cursor.rowcount, 'Registro(s) inserido(s)')
+print(cursor.rowcount, 'Registro(s) Deletados(s)')
 
+#deletar multiplos registros IN -----------------------------------
 
+# r = 'delete from aluno where matricula in(%s,%s)'
+# cursor.execute(r,(2,4))
+# conexao.commit()
+# print(cursor.rowcount, 'Registro(s) Deletados(s)')
 
+#deletar com intervalo - between -----------------------------------
 
+r1='delete from aluno where matricula between %s and %s'
+cursor.execute(r1,(6,9))
+conexao.commit()
+print(cursor.rowcount, 'Registro(s) Deletados(s)')
+
+#update - atualizar -------------------------------
+
+cursor.execute('update aluno set nome="Tatiana Viana" where matricula=1')
+conexao.commit()
+print(cursor.rowcount, 'Registro(s) atualizado(s)')"""
+
+#drop - apaga tudo ---------------------------------------------------
+
+#cursor.execute('drop database aula8')
+cursor.execute('drop table aluno')
 
 
 
