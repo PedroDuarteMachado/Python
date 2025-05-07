@@ -88,15 +88,18 @@ print('Dados do aluno: ')
 for i in r:
     print(i)
 
-#Ordenação asc/desc - order by -----------------------------------------------"""
+#Ordenação asc/desc - order by -----------------------------------------------
 
 
 cursor.execute('select nome from aluno where idade > 30 order by nome desc')
 r = cursor.fetchall()
 print('Dados do aluno ordenado (A-Z)')
 for i in r:
-    print(i)
+    print(i)"""
 
+cursor.execute('delete from aluno where matricula=1')
+conexao.commit()
+print(cursor.rowcount, 'Registro(s) inserido(s)')
 
 
 
